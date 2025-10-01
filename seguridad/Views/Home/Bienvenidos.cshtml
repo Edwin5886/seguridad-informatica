@@ -1,0 +1,8 @@
+﻿@{
+    ViewData["Title"] = "Bienvenido";
+}
+
+<div class="d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh;">
+    <h2 class="mb-4 text-center text-white">¡Bienvenido, @ViewBag.Email!</h2>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Cerrar sesión</a>
+</div>
