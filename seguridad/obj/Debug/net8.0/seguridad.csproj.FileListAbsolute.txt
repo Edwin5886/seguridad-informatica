@@ -120,3 +120,4 @@ C:\Users\edwin\source\repos\seguridad\seguridad\obj\Debug\net8.0\refint\segurida
 C:\Users\edwin\source\repos\seguridad\seguridad\obj\Debug\net8.0\seguridad.pdb
 C:\Users\edwin\source\repos\seguridad\seguridad\obj\Debug\net8.0\seguridad.genruntimeconfig.cache
 C:\Users\edwin\source\repos\seguridad\seguridad\obj\Debug\net8.0\ref\seguridad.dll
+C:\Users\edwin\source\repos\seguridad\seguridad\obj\Debug\net8.0\seguridad.sourcelink.json

@@ -1,0 +1,139 @@
+﻿@model IEnumerable<seguridad.Models.UsuarioSeguridad>
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<style>
+    body {
+        background: #222;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .main-content {
+        position: relative;
+        max-width: 900px;
+        margin: 60px auto 0 auto;
+        padding: 30px 40px 40px 40px;
+        background: transparent;
+    }
+    .usuarios-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+    }
+    .usuarios-table th, .usuarios-table td {
+        color: #fff;
+        padding: 8px;
+        border-bottom: 1px solid #444;
+    }
+    .usuarios-table th {
+        background: #18baff;
+        color: #222;
+        text-align: left;
+    }
+    .usuarios-table th.actions, .usuarios-table td.actions {
+        text-align: right;
+        min-width: 240px;
+    }
+    .btn-action {
+        margin-right: 6px;
+        padding: 4px 14px;
+        border: none;
+        border-radius: 4px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        font-weight: bold;
+    }
+    .btn-ver {
+        background: #fff;
+        color: #222;
+        border: 1px solid #ccc;
+    }
+    .btn-ver:hover {
+        background: #18baff;
+        color: #fff;
+    }
+    .btn-editar {
+        background: #f7c948;
+        color: #222;
+        border: 1px solid #f7c948;
+    }
+    .btn-editar:hover {
+        background: #fff;
+        color: #f7c948;
+    }
+    .btn-eliminar {
+        background: #e74c3c;
+        color: #fff;
+        border: 1px solid #e74c3c;
+    }
+    .btn-eliminar:hover {
+        background: #fff;
+        color: #e74c3c;
+    }
+    .btn-registrar {
+        background: #18baff;
+        color: #fff;
+        border: 1px solid #18baff;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+    }
+    .btn-registrar:hover {
+        background: #fff;
+        color: #18baff;
+    }
+    .btn-action i {
+        margin-right: 4px;
+    }
+</style>
+
+<div class="main-content">
+    @if (TempData["Message"] != null)
+    {
+        <div style="color: #18baff; font-weight: bold; margin-bottom: 10px;">
+            @TempData["Message"]
+        </div>
+    }
+
+    <a href="/Home/Register" class="btn-action btn-registrar">
+        <i class="bi bi-person-plus"></i> Registrar usuario
+    </a>
+    <h2 style="color:#fff;">Usuarios registrados</h2>
+    <table class="usuarios-table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th class="actions">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model)
+            {
+                <tr>
+                    <td>@usuario.Email</td>
+                    <td class="actions">
+                        <a class="btn-action btn-ver" title="Ver" href="/Home/VerUsuario/@usuario.Id">
+                            <i class="bi bi-eye"></i> Ver
+                        </a>
+                        <a class="btn-action btn-editar" title="Editar" href="/Home/Edit/@usuario.Id">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                        <form method="post" action="/Home/Delete/@usuario.Id" style="display:inline;" onsubmit="return confirm('¿Seguro que deseas eliminar este usuario?');">
+                            <button type="submit" class="btn-action btn-eliminar">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

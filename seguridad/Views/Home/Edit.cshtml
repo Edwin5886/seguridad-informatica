@@ -1,0 +1,22 @@
+﻿@model seguridad.Models.UsuarioSeguridad
+
+@{
+    ViewData["Title"] = "Editar usuario";
+}
+
+<div class="container mt-5">
+    <h2 class="text-white">Editar usuario</h2>
+    <form method="post">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <div class="mb-3">
+            <label for="nuevoEmail" class="form-label text-white">Email</label>
+            <input type="email" id="nuevoEmail" name="nuevoEmail" class="form-control" value="@Model.Email" required />
+        </div>
+        <div class="mb-3">
+            <label for="nuevaPassword" class="form-label text-white">Nueva contraseña (opcional)</label>
+            <input type="password" id="nuevaPassword" name="nuevaPassword" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-warning">Guardar cambios</button>
+        <a href="/Home/Usuarios" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

@@ -1,0 +1,21 @@
+﻿@model seguridad.Models.UsuarioSeguridad
+
+@{
+    ViewData["Title"] = "Detalle de usuario";
+}
+
+<div class="container mt-5">
+    <h2 class="text-dark">Detalle de usuario</h2>
+    <div class="card shadow">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3 text-dark">ID</dt>
+                <dd class="col-sm-9 text-dark">@Model.Id</dd>
+
+                <dt class="col-sm-3 text-dark">Email</dt>
+                <dd class="col-sm-9 text-dark">@Model.Email</dd>
+            </dl>
+            <a href="/Home/Usuarios" class="btn btn-secondary">Volver</a>
+        </div>
+    </div>
+</div>

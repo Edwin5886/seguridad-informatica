@@ -12,8 +12,16 @@ public class AuditoriaHelper
 
     public void Registrar(string usuario, string operacion, string tabla, Dictionary<string, (string anterior, string nuevo)> cambios)
     {
-        var idOperacion = _context.Operaciones.First(o => o.NombreOperacion == operacion).IdOperacion;
-        var idTabla = _context.TablasAuditables.First(t => t.NombreTabla == tabla).IdTabla;
+        var operacionObj = _context.Operaciones.FirstOrDefault(o => o.NombreOperacion == operacion);
+        if (operacionObj == null)
+            throw new Exception($"No se encontró la operación '{operacion}' en la tabla Operaciones.");
+
+        var tablaObj = _context.TablasAuditables.FirstOrDefault(t => t.NombreTabla == tabla);
+        if (tablaObj == null)
+            throw new Exception($"No se encontró la tabla '{tabla}' en la tabla TablasAuditables.");
+
+        var idOperacion = operacionObj.IdOperacion;
+        var idTabla = tablaObj.IdTabla;
 
         var encabezado = new BitacoraEncabezado
         {

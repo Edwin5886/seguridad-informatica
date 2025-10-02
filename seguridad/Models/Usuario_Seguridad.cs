@@ -1,19 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("Usuarios_Seguridad")]
-public class UsuarioSeguridad
+namespace seguridad.Models
 {
-    [Key]
-    public int Id { get; set; }
+    [Table("Usuarios_Seguridad")]
+    public class UsuarioSeguridad
+    {
+        [Key]
+        public int Id { get; set; }
 
-    [Required]
-    [EmailAddress]
-    public string Email { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
 
-    [Required]
-    public byte[] PasswordHash { get; set; }
+        [Required]
+        public byte[] PasswordHash { get; set; }
 
-    [Required]
-    public byte[] PasswordSalt { get; set; }
+        [Required]
+        public byte[] PasswordSalt { get; set; }
+    }
 }
